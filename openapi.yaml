@@ -7,8 +7,21 @@ info:
 paths:
   /freebusy:
     get:
-      summary: Verificar disponibilidade de horário
+      summary: Verificar disponibilidade de horário no Google Calendar
       parameters:
+        - name: route
+          in: query
+          required: true
+          description: Definir a rota interna do Apps Script (deve ser sempre "freebusy")
+          schema:
+            type: string
+            enum: ["freebusy"]
+        - name: token
+          in: query
+          required: true
+          description: Token OAuth2 de acesso ao Google Calendar
+          schema:
+            type: string
         - name: timeMin
           in: query
           required: true
@@ -23,7 +36,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Lista de períodos ocupados
+          description: Lista de períodos ocupados no Google Calendar
           content:
             application/json:
               schema:
