@@ -1,14 +1,15 @@
 {
   "schema_version": "v1",
-  "name_for_human": "Agenda ChatGPT",
-  "name_for_model": "agenda_gpt",
-  "description_for_human": "Permite ao ChatGPT verificar e criar eventos na sua Agenda Google",
-  "description_for_model": "Verifique disponibilidade e crie compromissos no Google Calendar",
+  "name_for_human": "Agenda ChatGPT – Integração com Google Calendar",
+  "name_for_model": "agenda_gpt_google_calendar",
+  "description_for_human": "Permite ao ChatGPT verificar disponibilidade e criar eventos na sua Agenda Google, com autenticação via OAuth2.",
+  "description_for_model": "Verifique disponibilidade e crie compromissos no Google Calendar usando OAuth2.",
   "auth": {
     "type": "oauth",
     "client_url": "https://accounts.google.com/o/oauth2/v2/auth",
     "scope": "https://www.googleapis.com/auth/calendar.events https://www.googleapis.com/auth/calendar.readonly",
-    "authorization_url": "https://accounts.google.com/o/oauth2/v2/auth"
+    "authorization_url": "https://accounts.google.com/o/oauth2/v2/auth",
+    "token_url": "https://oauth2.googleapis.com/token",
     "authorization_content_type": "application/x-www-form-urlencoded",
     "verification_tokens": {
       "openai": "Fl@mengo123"
