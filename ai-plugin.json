@@ -1,0 +1,24 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "Agenda ChatGPT",
+  "name_for_model": "agenda_gpt",
+  "description_for_human": "Permite ao ChatGPT verificar e criar eventos na sua Agenda Google",
+  "description_for_model": "Verifique disponibilidade e crie compromissos no Google Calendar",
+  "auth": {
+    "type": "oauth",
+    "client_url": "https://accounts.google.com/o/oauth2/v2/auth",
+    "scope": "https://www.googleapis.com/auth/calendar.events https://www.googleapis.com/auth/calendar.readonly",
+    "authorization_url": "https://script.google.com/a/macros/saude.sc.gov.br/s/AKfycbxXV-4pgKnSBYDG8Gc5Xp8fqJnPs9bj3cSqjRcqNm0hlvnhlJzZGKNrNIA5Vz9O6S2mBA/exec",
+    "authorization_content_type": "application/x-www-form-urlencoded",
+    "verification_tokens": {
+      "openai": "Fl@mengo123"
+    }
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://raw.githubusercontent.com/Marciopachecolab/chatgpt-plugin-manifest/refs/heads/main/openapi.yaml"
+  },
+  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/4/45/Internet-icon.png",
+  "contact_email": "andrademp@saude.sc.gov.br",
+  "legal_info_url": "https://docs.google.com/document/d/1rw92JKvJvK0uNlLQv7H4PO9tKjUg5cN2x6Oo5sqg3C0/edit?usp=drive_link"
+}
