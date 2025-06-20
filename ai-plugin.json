@@ -8,7 +8,7 @@
     "type": "oauth",
     "client_url": "https://accounts.google.com/o/oauth2/v2/auth",
     "scope": "https://www.googleapis.com/auth/calendar.events https://www.googleapis.com/auth/calendar.readonly",
-    "authorization_url": "https://script.google.com/macros/s/SEU_SCRIPT_ID/exec",
+    "authorization_url": "https://accounts.google.com/o/oauth2/v2/auth"
     "authorization_content_type": "application/x-www-form-urlencoded",
     "verification_tokens": {
       "openai": "Fl@mengo123"
