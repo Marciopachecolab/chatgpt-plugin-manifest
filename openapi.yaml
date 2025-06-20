@@ -1,69 +1,24 @@
-openapi: 3.0.1
-info:
-  title: Agenda ChatGPT API
-  description: API para integração do ChatGPT com o Google Calendar via Apps Script.
-  version: '1.0'
-
-paths:
-  /freebusy:
-    get:
-      summary: Verificar disponibilidade de horário no Google Calendar
-      parameters:
-        - name: route
-          in: query
-          required: true
-          description: Definir a rota interna do Apps Script (deve ser sempre "freebusy")
-          schema:
-            type: string
-            enum: ["freebusy"]
-        - name: token
-          in: query
-          required: true
-          description: Token OAuth2 de acesso ao Google Calendar
-          schema:
-            type: string
-        - name: timeMin
-          in: query
-          required: true
-          description: Início do intervalo (formato RFC3339)
-          schema:
-            type: string
-        - name: timeMax
-          in: query
-          required: true
-          description: Fim do intervalo (formato RFC3339)
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Lista de períodos ocupados no Google Calendar
-          content:
-            application/json:
-              schema:
-                type: object
-
-  /events:
-    post:
-      summary: Criar um novo evento no Google Calendar
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                summary:
-                  type: string
-                description:
-                  type: string
-                start:
-                  type: string
-                end:
-                  type: string
-      responses:
-        '200':
-          description: Evento criado com sucesso
-          content:
-            application/json:
-              schema:
-                type: object
+{
+  "schema_version": "v1",
+  "name_for_human": "Agenda ChatGPT",
+  "name_for_model": "agenda_gpt",
+  "description_for_human": "Permite ao ChatGPT verificar e criar eventos na sua Agenda Google",
+  "description_for_model": "Verifique disponibilidade e crie compromissos no Google Calendar",
+  "auth": {
+    "type": "oauth",
+    "client_url": "https://accounts.google.com/o/oauth2/v2/auth",
+    "scope": "https://www.googleapis.com/auth/calendar.events https://www.googleapis.com/auth/calendar.readonly",
+    "authorization_url": "https://script.google.com/a/macros/saude.sc.gov.br/s/AKfycbxXV-4pgKnSBYDG8Gc5Xp8fqJnPs9bj3cSqjRcqNm0hlvnhlJzZGKNrNIA5Vz9O6S2mBA/exec",
+    "authorization_content_type": "application/x-www-form-urlencoded",
+    "verification_tokens": {
+      "openai": "Fl@mengo123"
+    }
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://raw.githubusercontent.com/Marciopachecolab/chatgpt-plugin-manifest/refs/heads/main/openapi.yaml"
+  },
+  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/4/45/Internet-icon.png",
+  "contact_email": "andrademp@saude.sc.gov.br",
+  "legal_info_url": "https://docs.google.com/document/d/1rw92JKvJvK0uNlLQv7H4PO9tKjUg5cN2x6Oo5sqg3C0/edit?usp=drive_link"
+}
