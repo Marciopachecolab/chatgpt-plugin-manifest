@@ -1,24 +1,52 @@
-{
-  "schema_version": "v1",
-  "name_for_human": "Agenda ChatGPT",
-  "name_for_model": "agenda_gpt",
-  "description_for_human": "Permite ao ChatGPT verificar e criar eventos na sua Agenda Google",
-  "description_for_model": "Verifique disponibilidade e crie compromissos no Google Calendar",
-  "auth": {
-    "type": "oauth",
-    "client_url": "https://accounts.google.com/o/oauth2/v2/auth",
-    "scope": "https://www.googleapis.com/auth/calendar.events https://www.googleapis.com/auth/calendar.readonly",
-    "authorization_url": "https://script.google.com/a/macros/saude.sc.gov.br/s/AKfycbxXV-4pgKnSBYDG8Gc5Xp8fqJnPs9bj3cSqjRcqNm0hlvnhlJzZGKNrNIA5Vz9O6S2mBA/exec",
-    "authorization_content_type": "application/x-www-form-urlencoded",
-    "verification_tokens": {
-      "openai": "Fl@mengo123"
-    }
-  },
-  "api": {
-    "type": "openapi",
-    "url": "https://raw.githubusercontent.com/Marciopachecolab/chatgpt-plugin-manifest/refs/heads/main/openapi.yaml"
-  },
-  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/4/45/Internet-icon.png",
-  "contact_email": "andrademp@saude.sc.gov.br",
-  "legal_info_url": "https://docs.google.com/document/d/1rw92JKvJvK0uNlLQv7H4PO9tKjUg5cN2x6Oo5sqg3C0/edit?usp=drive_link"
-}
+openapi: 3.0.1
+info:
+  title: Agenda ChatGPT API
+  description: API para integração do ChatGPT com o Google Calendar via Google Apps Script.
+  version: '1.0'
+servers:
+  - url: https://script.google.com/a/macros/saude.sc.gov.br/s/AKfycbxXV-4pgKnSBYDG8Gc5XpBn9PbJ3c5qRCqdM0hwhJhJzXGNk1IVASv9O652mBA/exec
+paths:
+  /:
+    post:
+      summary: Endpoint unificado
+      description: Endpoint único que aceita múltiplas operações via parâmetro `path` na query string.
+      parameters:
+        - name: path
+          in: query
+          required: true
+          description: Define a ação a ser executada. Ex: "events", "freebusy", "exchange_token".
+          schema:
+            type: string
+            enum: ["events", "freebusy", "exchange_token"]
+        - name: token
+          in: query
+          required: true
+          description: Token OAuth do usuário.
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                summary:
+                  type: string
+                description:
+                  type: string
+                start:
+                  type: string
+                end:
+                  type: string
+                timeMin:
+                  type: string
+                timeMax:
+                  type: string
+      responses:
+        '200':
+          description: Resposta de sucesso.
+          content:
+            application/json:
+              schema:
+                type: object
