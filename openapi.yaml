@@ -1,27 +1,29 @@
 openapi: 3.0.1
 info:
   title: Agenda ChatGPT API
-  description: API para integração do ChatGPT com o Google Calendar via Google Apps Script.
+  description: API para integração do ChatGPT com o Google Calendar via Google Apps Script. Endpoint único, usando o parâmetro "path" para diferenciar as operações.
   version: '1.0'
+
 servers:
   - url: https://script.google.com/a/macros/saude.sc.gov.br/s/AKfycbxXV-4pgKnSBYDG8Gc5XpBn9PbJ3c5qRCqdM0hwhJhJzXGNk1IVASv9O652mBA/exec
+
 paths:
   /:
     post:
-      summary: Endpoint unificado
-      description: Endpoint único que aceita múltiplas operações via parâmetro `path` na query string.
+      summary: Endpoint unificado para Agenda ChatGPT
+      description: Executa diferentes ações (como criar evento ou verificar disponibilidade) de acordo com o valor do parâmetro `path` enviado na query string.
       parameters:
         - name: path
           in: query
           required: true
-          description: Define a ação a ser executada. Ex: "events", "freebusy", "exchange_token".
+          description: Nome da operação a ser executada. Exemplos: "events", "freebusy", "exchange_token".
           schema:
             type: string
             enum: ["events", "freebusy", "exchange_token"]
         - name: token
           in: query
           required: true
-          description: Token OAuth do usuário.
+          description: Token de acesso OAuth do usuário.
           schema:
             type: string
       requestBody:
@@ -33,16 +35,22 @@ paths:
               properties:
                 summary:
                   type: string
+                  description: Título do evento (usado quando path=events)
                 description:
                   type: string
+                  description: Descrição opcional do evento
                 start:
                   type: string
+                  description: Início do evento no formato RFC3339 (exemplo: 2025-07-01T10:00:00-03:00)
                 end:
                   type: string
+                  description: Fim do evento no formato RFC3339
                 timeMin:
                   type: string
+                  description: Início do intervalo de consulta de disponibilidade (usado quando path=freebusy)
                 timeMax:
                   type: string
+                  description: Fim do intervalo de consulta de disponibilidade (usado quando path=freebusy)
       responses:
         '200':
           description: Resposta de sucesso.
@@ -50,3 +58,4 @@ paths:
             application/json:
               schema:
                 type: object
+                additionalProperties: true
