@@ -59,3 +59,5 @@ paths:
               schema:
                 type: object
                 additionalProperties: true
+
+components: {}
