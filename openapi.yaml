@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.1.0
 info:
   title: Agenda ChatGPT API
   version: "1.0"
@@ -27,6 +27,7 @@ components:
         code:
           type: string
       required: [code]
+
     FreeBusyRequest:
       type: object
       properties:
@@ -37,11 +38,14 @@ components:
           type: string
           format: date-time
       required: [timeMin, timeMax]
+
     EventRequest:
       type: object
       properties:
-        summary: { type: string }
-        description: { type: string }
+        summary:
+          type: string
+        description:
+          type: string
         start:
           type: string
           format: date-time
@@ -49,13 +53,16 @@ components:
           type: string
           format: date-time
       required: [summary, start, end]
+
     GenericResponse:
       type: object
+      properties: {}
       additionalProperties: true
 
 paths:
   /:
     post:
+      operationId: unifiedCalendarOperation
       summary: Endpoint unificado com query param path
       parameters:
         - name: path
