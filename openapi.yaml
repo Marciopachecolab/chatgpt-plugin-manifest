@@ -5,7 +5,7 @@ info:
   version: '1.0'
 
 servers:
-  - url: https://script.google.com/a/macros/saude.sc.gov.br/s/AKfycbxXV-4pgKnSBYDG8Gc5XpBn9PbJ3c5qRCqdM0hwhJhJzXGNk1IVASv9O652mBA/exec
+  - url: https://script.google.com/a/macros/saude.sc.gov.br/s/AKfycbxUKPxvX4QMqNc7eUyJP06ZGwqJdFnvxdFpicHzhaZA4GPEVc4WIdeKY9b_JYYvPdil/exec
 
 paths:
   /:
