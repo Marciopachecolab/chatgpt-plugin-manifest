@@ -1,30 +1,13 @@
-openapi: 3.0.1
+openapi: 3.0.0
 info:
-  title: Agenda ChatGPT API
-  description: API para integração com Google Calendar via Apps Script, com endpoint único.
-  version: '1.0'
-
+  title: Google Calendar Plugin
+  version: 1.0.0
 servers:
-  - url: https://script.google.com/macros/s/AKfycby3iGeGzlNNRwja5dep5IiRgLyqK5WyJvt_Afr2TPTF2PlKpQ5mZnyM8MkBNbhQG57P/exec
-
+  - url: https://script.google.com/macros/s/SEU_SCRIPT_ID/exec
 paths:
-  /:
+  /exchange_token:
     post:
-      operationId: executeAgendaOperation
-      summary: Endpoint unificado
-      description: Usa `path` na query para selecionar ação: events, freebusy ou exchange_token.
-      parameters:
-        - name: path
-          in: query
-          required: true
-          schema:
-            type: string
-            enum: ["events", "freebusy", "exchange_token"]
-        - name: token
-          in: query
-          required: true
-          schema:
-            type: string
+      summary: Exchange authorization code for tokens
       requestBody:
         required: true
         content:
@@ -32,27 +15,97 @@ paths:
             schema:
               type: object
               properties:
-                summary:
+                code:
                   type: string
-                description:
-                  type: string
-                start:
-                  type: string
-                end:
-                  type: string
-                timeMin:
-                  type: string
-                timeMax:
-                  type: string
-              required: []  # ou inclua campos conforme necessário
+              required: [code]
       responses:
         '200':
-          description: Resposta bem‑sucedida
+          description: Tokens JSON
           content:
             application/json:
               schema:
                 type: object
-                additionalProperties: true
-
+                properties:
+                  access_token: { type: string }
+                  refresh_token: { type: string }
+                  expires_in: { type: integer }
+                  token_type: { type: string }
+      tags: [OAuth]
+  /freebusy:
+    post:
+      summary: Verifica disponibilidade do calendário
+      security:
+        - OAuth2: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                calendarId: { type: string }
+                timeMin: { type: string, format: date-time }
+                timeMax: { type: string, format: date-time }
+              required: [timeMin, timeMax]
+      responses:
+        '200':
+          description: Disponibilidade
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  busy: { type: boolean }
+                  events:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id: { type: string }
+                        summary: { type: string }
+                        start: { type: string, format: date-time }
+                        end: { type: string, format: date-time }
+      tags: [Calendar]
+  /events:
+    post:
+      summary: Cria evento no calendário
+      security:
+        - OAuth2: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                calendarId: { type: string }
+                summary: { type: string }
+                start: { type: string, format: date-time }
+                end: { type: string, format: date-time }
+                description: { type: string }
+                location: { type: string }
+              required: [summary, start, end]
+      responses:
+        '200':
+          description: Resultado da criação
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id: { type: string }
+                  status: { type: string }
+      tags: [Calendar]
 components:
-  schemas: {}
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: "https://accounts.google.com/o/oauth2/v2/auth?access_type=offline"
+          tokenUrl: "https://script.google.com/macros/s/SEU_SCRIPT_ID/exec?path=exchange_token"
+          scopes:
+            openid: "User identity"
+            email: "User email"
+            https://www.googleapis.com/auth/calendar.events: "Criar/ler eventos"
+            https://www.googleapis.com/auth/calendar.readonly: "Ler eventos"
