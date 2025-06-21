@@ -8,7 +8,7 @@
     "type": "oauth",
     "client_url": "https://accounts.google.com/o/oauth2/v2/auth",
     "scope": "https://www.googleapis.com/auth/calendar.events https://www.googleapis.com/auth/calendar.readonly",
-    "authorization_url": "https://accounts.google.com/o/oauth2/v2/auth",
+    "authorization_url": "https://script.google.com/macros/s/AKfycby3iGeGzlNNRwja5dep5IiRgLyqK5WyJvt_Afr2TPTF2PlKpQ5mZnyM8MkBNbhQG57P/exec?path=exchange_token",
     "token_url": "https://oauth2.googleapis.com/token",
     "authorization_content_type": "application/x-www-form-urlencoded",
     "verification_tokens": {
