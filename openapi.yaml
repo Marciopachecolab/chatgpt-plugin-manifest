@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: Agenda ChatGPT API
-  description: API para integração do ChatGPT com o Google Calendar via Google Apps Script. Endpoint único, usando o parâmetro "path" para diferenciar as operações.
+  description: API para integração com Google Calendar via Apps Script, com endpoint único.
   version: '1.0'
 
 servers:
@@ -10,20 +10,19 @@ servers:
 paths:
   /:
     post:
-      summary: Endpoint unificado para Agenda ChatGPT
-      description: Executa diferentes ações (como criar evento ou verificar disponibilidade) de acordo com o valor do parâmetro `path` enviado na query string.
+      operationId: executeAgendaOperation
+      summary: Endpoint unificado
+      description: Usa `path` na query para selecionar ação: events, freebusy ou exchange_token.
       parameters:
         - name: path
           in: query
           required: true
-          description: Nome da operação a ser executada. Exemplos: "events", "freebusy", "exchange_token".
           schema:
             type: string
             enum: ["events", "freebusy", "exchange_token"]
         - name: token
           in: query
           required: true
-          description: Token de acesso OAuth do usuário.
           schema:
             type: string
       requestBody:
@@ -35,29 +34,25 @@ paths:
               properties:
                 summary:
                   type: string
-                  description: Título do evento (usado quando path=events)
                 description:
                   type: string
-                  description: Descrição opcional do evento
                 start:
                   type: string
-                  description: Início do evento no formato RFC3339 (exemplo: 2025-07-01T10:00:00-03:00)
                 end:
                   type: string
-                  description: Fim do evento no formato RFC3339
                 timeMin:
                   type: string
-                  description: Início do intervalo de consulta de disponibilidade (usado quando path=freebusy)
                 timeMax:
                   type: string
-                  description: Fim do intervalo de consulta de disponibilidade (usado quando path=freebusy)
+              required: []  # ou inclua campos conforme necessário
       responses:
         '200':
-          description: Resposta de sucesso.
+          description: Resposta bem‑sucedida
           content:
             application/json:
               schema:
                 type: object
                 additionalProperties: true
 
-components: {}
+components:
+  schemas: {}
