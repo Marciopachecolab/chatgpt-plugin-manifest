@@ -20,39 +20,37 @@ components:
           scopes:
             https://www.googleapis.com/auth/calendar.events: "Criar/editar eventos"
             https://www.googleapis.com/auth/calendar.readonly: "Ler eventos"
+
   schemas:
-    ExchangeTokenRequest:
+    UnifiedRequest:
       type: object
       properties:
         code:
           type: string
-      required: [code]
-
-    FreeBusyRequest:
-      type: object
-      properties:
+          description: Código de autorização (usado quando path = exchange_token)
         timeMin:
           type: string
           format: date-time
+          description: Início do intervalo de consulta de disponibilidade (usado quando path = freebusy)
         timeMax:
           type: string
           format: date-time
-      required: [timeMin, timeMax]
-
-    EventRequest:
-      type: object
-      properties:
+          description: Fim do intervalo de consulta de disponibilidade (usado quando path = freebusy)
         summary:
           type: string
+          description: Título do evento (usado quando path = events)
         description:
           type: string
+          description: Descrição do evento (usado quando path = events)
         start:
           type: string
           format: date-time
+          description: Início do evento (usado quando path = events)
         end:
           type: string
           format: date-time
-      required: [summary, start, end]
+          description: Fim do evento (usado quando path = events)
+      additionalProperties: false
 
     GenericResponse:
       type: object
@@ -81,10 +79,7 @@ paths:
         content:
           application/json:
             schema:
-              oneOf:
-                - $ref: '#/components/schemas/ExchangeTokenRequest'
-                - $ref: '#/components/schemas/FreeBusyRequest'
-                - $ref: '#/components/schemas/EventRequest'
+              $ref: '#/components/schemas/UnifiedRequest'
       responses:
         "200":
           description: Resposta de sucesso (formato variável conforme operação)
