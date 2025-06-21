@@ -17,9 +17,9 @@
   },
   "api": {
     "type": "openapi",
-    "url": "https://raw.githubusercontent.com/Marciopachecolab/chatgpt-plugin-manifest/openapi.yaml"
+    "url": "https://raw.githubusercontent.com/Marciopachecolab/chatgpt-plugin-manifest/main/openapi.yaml"
   },
   "logo_url": "https://upload.wikimedia.org/wikipedia/commons/4/45/Internet-icon.png",
   "contact_email": "andrademp@saude.sc.gov.br",
-  "legal_info_url": "https://docs.google.com/document/d/1.../edit"
+  "legal_info_url": "https://docs.google.com/document/d/1rw92JKvJvK0uNlLQv7H4PO9tKjUg5cN2x6Oo5sqg3C0/edit?usp=drive_link"
 }
