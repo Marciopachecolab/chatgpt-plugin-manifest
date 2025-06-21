@@ -15,7 +15,7 @@ components:
       type: oauth2
       flows:
         authorizationCode:
-          authorizationUrl: "https://accounts.google.com/o/oauth2/v2/auth?access_type=offline"
+          authorizationUrl: "https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=762505957614-v46kp1cqvr26ek6o5bqpfo5ibgnqv818.apps.googleusercontent.com&redirect_uri=https%3A%2F%2Fchat.openai.com%2Faip%2Fg-7293dde6a39a3128daf1c8bee21271c3da3257a5%2Foauth%2Fcallback&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcalendar.events%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcalendar.readonly&access_type=offline&prompt=consent"
           tokenUrl: "https://oauth2.googleapis.com/token"
           scopes:
             https://www.googleapis.com/auth/calendar.events: "Criar/editar eventos"
