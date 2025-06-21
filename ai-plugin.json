@@ -6,18 +6,18 @@
   "description_for_model": "Verifique disponibilidade e crie compromissos no Google Calendar usando OAuth2.",
   "auth": {
     "type": "oauth",
-    "client_url": "https://accounts.google.com/o/oauth2/v2/auth",
-    "scope": "https://www.googleapis.com/auth/calendar.events https://www.googleapis.com/auth/calendar.readonly",
-    "authorization_url": "https://script.google.com/macros/s/AKfycby3iGeGzlNNRwja5dep5IiRgLyqK5WyJvt_Afr2TPTF2PlKpQ5mZnyM8MkBNbhQG57P/exec?path=exchange_token",
+    "client_url": "https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=762505957614-v46kp1cqvr26ek6o5bqpfo5ibgnqv818.apps.googleusercontent.com&redirect_uri=https%3A%2F%2Fchat.openai.com%2Faip%2Fg-2dc0975998e5e8608e3dbe980f4c82a2334b14b4%2Foauth%2Fcallback&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcalendar.events%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcalendar.readonly&access_type=offline&prompt=consent",
+    "authorization_url": "https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=762505957614-v46kp1cqvr26ek6o5bqpfo5ibgnqv818.apps.googleusercontent.com&redirect_uri=https%3A%2F%2Fchat.openai.com%2Faip%2Fg-2dc0975998e5e8608e3dbe980f4c82a2334b14b4%2Foauth%2Fcallback&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcalendar.events%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcalendar.readonly&access_type=offline&prompt=consent",
     "token_url": "https://oauth2.googleapis.com/token",
     "authorization_content_type": "application/x-www-form-urlencoded",
+    "scope": "https://www.googleapis.com/auth/calendar.events https://www.googleapis.com/auth/calendar.readonly",
     "verification_tokens": {
       "openai": "Fl@mengo123"
     }
   },
   "api": {
     "type": "openapi",
-    "url": "https://raw.githubusercontent.com/Marciopachecolab/chatgpt-plugin-manifest/main/openapi.yaml"
+    "url": "https://script.google.com/macros/s/AKfycby3iGeGzlNNRwja5dep5IiRgLyqK5WyJvt_Afr2TPTF2PlKpQ5mZnyM8MkBNbhQG57P/exec?path=openapi"
   },
   "logo_url": "https://upload.wikimedia.org/wikipedia/commons/4/45/Internet-icon.png",
   "contact_email": "andrademp@saude.sc.gov.br",
