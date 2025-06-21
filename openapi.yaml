@@ -16,7 +16,7 @@ components:
       flows:
         authorizationCode:
           authorizationUrl: "https://accounts.google.com/o/oauth2/v2/auth?access_type=offline"
-          tokenUrl: "https://script.google.com/macros/s/AKfycby3iGeGzlNNRwja5dep5IiRgLyqK5WyJvt_Afr2TPTF2PlKpQ5mZnyM8MkBNbhQG57P/exec?path=exchange_token"
+          tokenUrl: "https://oauth2.googleapis.com/token"
           scopes:
             https://www.googleapis.com/auth/calendar.events: "Criar/editar eventos"
             https://www.googleapis.com/auth/calendar.readonly: "Ler eventos"
