@@ -7,7 +7,7 @@ info:
     entre as operações de troca de token, criação de evento ou consulta de disponibilidade.
 
 servers:
-  - url: https://script.google.com/macros/s/AKfycby3iGeGzlNNRwja5dep5IiRgLyqK5WyJvt_Afr2TPTF2PlKpQ5mZnyM8MkBNbhQG57P/exec
+  - url: https://script.google.com/a/macros/saude.sc.gov.br/s/AKfycbyn2ogDV0hcJR1i8Vm8qXTLrsZ_BJxcm8zqMnLnS5zegxlrTK4S2z2XqfCCysdJd_nG/exec
 
 components:
   securitySchemes:
