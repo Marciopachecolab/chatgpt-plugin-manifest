@@ -2,7 +2,7 @@
   "schema_version": "v1",
   "name_for_human": "Agenda ChatGPT – Integração com Google Calendar",
   "name_for_model": "agenda_gpt_google_calendar",
-  "description_for_human": "Permite ao ChatGPT verificar disponibilidade e criar eventos na sua Agenda Google, com autenticação via OAuth2.",
+  "description_for_human": "Permite ao ChatGPT verificar disponibilidade e criar eventos na sua Agenda Google, com OAuth2.",
   "description_for_model": "Verifique disponibilidade e crie compromissos no Google Calendar usando OAuth2.",
   "auth": {
     "type": "oauth",
@@ -17,9 +17,9 @@
   },
   "api": {
     "type": "openapi",
-    "url": "https://raw.githubusercontent.com/Marciopachecolab/chatgpt-plugin-manifest/main/openapi.yaml"
+    "url": "https://raw.githubusercontent.com/Marciopachecolab/chatgpt-plugin-manifest/openapi.yaml"
   },
   "logo_url": "https://upload.wikimedia.org/wikipedia/commons/4/45/Internet-icon.png",
   "contact_email": "andrademp@saude.sc.gov.br",
-  "legal_info_url": "https://docs.google.com/document/d/1rw92JKvJvK0uNlLQv7H4PO9tKjUg5cN2x6Oo5sqg3C0/edit?usp=drive_link"
+  "legal_info_url": "https://docs.google.com/document/d/1.../edit"
 }
